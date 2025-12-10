@@ -40,6 +40,13 @@ components:
     volume:
       size: 3Gi
 commands:
+  - id: install-git
+    exec:
+      component: tools
+      commandLine: "microdnf install -y git && microdnf clean all"
+      group:
+        kind: init
+        isDefault: true
   - id: build
     exec:
       component: tools
