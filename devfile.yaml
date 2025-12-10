@@ -43,7 +43,7 @@ commands:
   - id: install-git
     exec:
       component: tools
-      commandLine: "yum install -y git"
+      commandLine: "nohup /bin/bash -c 'microdnf install -y git && microdnf clean all' >/tmp/git-install.log 2>&1 &"
   - id: build
     exec:
       component: tools
