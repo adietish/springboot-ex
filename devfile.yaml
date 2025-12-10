@@ -19,7 +19,7 @@ starterProjects:
 components:
   - name: tools
     container:
-      image: registry.access.redhat.com/ubi9/openjdk-17:1.20-2.1721752931
+      image: quay.io/devfile/base-developer-image:ubi9-latest
       command: ["tail", "-f", "/dev/null"]
       memoryLimit: 768Mi
       mountSources: true
@@ -40,10 +40,6 @@ components:
     volume:
       size: 3Gi
 commands:
-  - id: install-git
-    exec:
-      component: tools
-      commandLine: "nohup /bin/bash -c 'microdnf install -y git && microdnf clean all' >/tmp/git-install.log 2>&1 &"
   - id: build
     exec:
       component: tools
@@ -68,7 +64,4 @@ commands:
       group:
         kind: debug
         isDefault: true
-events:
-  postStart:
-    - install-git
         
