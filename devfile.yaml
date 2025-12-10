@@ -43,10 +43,7 @@ commands:
   - id: install-git
     exec:
       component: tools
-      commandLine: "microdnf install -y git && microdnf clean all"
-      group:
-        kind: init
-        isDefault: true
+      commandLine: "yum install -y git"
   - id: build
     exec:
       component: tools
@@ -71,3 +68,7 @@ commands:
       group:
         kind: debug
         isDefault: true
+events:
+  postStart:
+    - install-git
+        
